@@ -27,5 +27,5 @@ export const articlesSlice = createSlice({
     }
 })
 
-export const {setLogin,setUserId,setLogout} = articlesSlice.actions;
+export const {setArticles,addArticle,updateArticleById,deleteArticleById,setComments,addComment} = articlesSlice.actions;
 export default articlesSlice.reducer;

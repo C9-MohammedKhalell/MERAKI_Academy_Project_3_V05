@@ -1,6 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import { setLogin,setUserId,setLogout} from "../redux/reducers/auth/index";
+import { setArticles,addArticle,updateArticleById,deleteArticleById,setComments,addComment} from "../redux/reducers/articles/index";
+import { useDispatch, useSelector } from "react-redux";
 
 import axios from "axios";
 
@@ -9,6 +12,7 @@ import { AuthContext } from "../../contexts/authContext";
 //===============================================================
 
 const Login = () => {
+  const dispatch = useDispatch();
   const { isLoggedIn, saveToken } = useContext(AuthContext);
   const history = useNavigate();
 
@@ -28,8 +32,10 @@ const Login = () => {
       });
       if (result.data) {
         setMessage("");
-        localStorage.setItem("token", result.data.token);
-        localStorage.setItem("userId", result.data.userId);
+  /*       localStorage.setItem("token", result.data.token);
+        localStorage.setItem("userId", result.data.userId); */
+        dispatch(setLogin(result.data.token))
+        dispatch(setUserId(result.data.userId))
         saveToken(result.data.token, result.data.userId);
       } else throw Error;
     } catch (error) {
