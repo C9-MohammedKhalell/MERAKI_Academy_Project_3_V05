@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import "./style.css";
 
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setArticle,addArticle,updateArticleById,deleteArticleById,setComments,addComment} from "../redux/reducers/articles/index";
 
 import { AuthContext } from "../../contexts/authContext";
 //===============================================================
@@ -16,6 +18,7 @@ const Dashboard = () => {
   const [message, setMessage] = useState("");
   const [comment, setComment] = useState("");
   const [show, setShow] = useState("");
+  const dispatch = useDispatch();
   //===============================================================
   const getAllArticles = async () => {
     try {
@@ -25,7 +28,8 @@ const Dashboard = () => {
         },
       });
       if (result.data.success) {
-        setArticles(result.data.result);
+/*         setArticles(result.data.result);
+ */        dispatch(setArticle(result.data.result))
         setMessage("");
       } else throw Error;
     } catch (error) {

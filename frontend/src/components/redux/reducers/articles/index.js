@@ -6,7 +6,7 @@ export const articlesSlice = createSlice({
         articles :[]
     },
     reducers :{
-        setArticles  :(state,action )=>{
+        setArticle  :(state,action )=>{
             state.articles = action.payload;
         } ,
         addArticle   :(state,action)=>{
@@ -27,5 +27,5 @@ export const articlesSlice = createSlice({
     }
 })
 
-export const {setArticles,addArticle,updateArticleById,deleteArticleById,setComments,addComment} = articlesSlice.actions;
+export const {setArticle,addArticle,updateArticleById,deleteArticleById,setComments,addComment} = articlesSlice.actions;
 export default articlesSlice.reducer;
