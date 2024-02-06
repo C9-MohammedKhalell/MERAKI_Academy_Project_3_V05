@@ -1,6 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setArticle,addArticle,updateArticleById,deleteArticleById,setComments,addComment} from "../redux/reducers/articles/index";
+
 
 import axios from "axios";
 
@@ -16,6 +19,7 @@ const AddArticle = () => {
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
+  const dispatch = useDispatch();
 
   //===============================================================
 

@@ -13,11 +13,20 @@ export const articlesSlice = createSlice({
             state.articles.push(action.payload)
         } ,
         updateArticleById    :(state,action)=>{
-
+            state.articles=state.articles.map((elem,i)=>{
+                if(elem.id==action.payload.id){
+                    return {...action.payload,...state.articles}
+                }
+                return elem
+            })
         } ,
         deleteArticleById    :(state,action)=>{
-
-        } , 
+            state.articles=state.articles.map((elem,i)=>{
+                if(elem.id !==action.payload){
+                    return {...action.payload,...state.articles}
+                }
+                return elem
+            })        } , 
         setComments    :(state,action)=>{
 
         } , 
